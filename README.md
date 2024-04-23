@@ -44,12 +44,12 @@ Follow these instructions to set up the required Python environment for running 
 
 To train the edge/cloud model, use train.py. This repo trains MobileNetV3 Small (as edge model) and EfficientV2L(as cloud model) on CIFAR-100 dataset. But the same can be used for other datasets or models
 
-To train a model from scratch, execute the following command:
+To train a model, execute the following command:
 
 ```bash
 python train.py --model_name <model_name> --data_dir <path_to_data>
 ```
-Replace <model_name> with mobilenet_v3 or efficientnet_v2_l and <path_to_data> to store the CIFAR-100 dataset. After training, the models are saved <model_name>.pth.
+Replace <model_name> with mobilenet_v3 or efficientnet_v2_l and <path_to_data> to store the CIFAR-100 dataset. After training, the models are saved as <model_name>.pth.
 
 ### Model Evaluation
 
@@ -75,13 +75,29 @@ Use the following command to calibrate the trained model
 ```bash
 python calibrate.py --model_path PATH_TO_YOUR_MODEL --model_name NAME_OF_YOUR_MODEL --data_dir PATH_TO_CIFAR100_DATASET
 ```
-The output will display the test loss, accuracy on the test set, and the Expected Calibration Error (ECE) after scaling. The script will also generate a .npy file containing the calibrated model's probabilities:
+The output will display the test loss, accuracy on the test set, and the Expected Calibration Error (ECE) after scaling. The model is calibrated on calibration set which is the subset of the test set. The script will also generate a .npy file containing the calibrated model's probabilities:
 
 
+### Selective Offloading
 
 
+To execute the offload script, use the following command:
 
+```bash
+python offload.py --mobnet_cal PATH_TO_CALIBRATED_MOBNET_PROBS --mobnet_uncal PATH_TO_UNCALIBRATED_MOBNET_PROBS --effnet PATH_TO_EFFICIENTNET_PROBS --labels PATH_TO_LABELS
 
+Where:
+
+- `--mobnet_cal`: is the path to the .npy file containing the calibrated MobileNet probabilities.
+- `--mobnet_uncal`: is the path to the .npy file containing the uncalibrated MobileNet probabilities.
+- `--effnet`: is the path to the .npy file containing the EfficientNet probabilities.
+- `--labels`: is the path to the .npy file containing the actual labels for the test data.
+
+The script will output:
+
+- Calibration curve plot saved as cifar-reliability.pdf.
+- Console output detailing the combined accuracy and offloading metrics at various thresholds.
+Ensure that all the .npy files are correctly located at the paths specified when running the script.
 
 
 
