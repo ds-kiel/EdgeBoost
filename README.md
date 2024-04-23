@@ -53,7 +53,7 @@ Replace <model_name> with mobilenet_v3 or efficientnet_v2_l and <path_to_data> t
 
 ### Model Evaluation
 
-After training your models with `train.py`, you can evaluate their performance using the `evaluate.py` script. This evaluation will output the accuracy of the chosen model on the CIFAR100 test dataset and will calculate the Expected Calibration Error (ECE).
+After training your models with `train.py`, you can evaluate their performance using the `evaluate.py` script. This evaluation will output the accuracy of the chosen model on the CIFAR-100 test dataset and will calculate the Expected Calibration Error (ECE).
 
 To evaluate a model, run the `evaluate.py` script with the required arguments:
 
@@ -97,6 +97,11 @@ The script will output:
 - Calibration curve plot saved as `cifar-reliability.pdf`.
 - Console output detailing the combined accuracy and offloading metrics at various thresholds.
 
+## Trained Models
+
+We provide pre-trained models and probability files for three datasets used in our paper. You can download them from the following Google Drive link:
+
+[Trained Models and Probabilities](https://drive.google.com/drive/folders/1f4fM1NMzThR_pv9G7w75pkJYEbISJhjx?usp=sharing)
 
 
 
