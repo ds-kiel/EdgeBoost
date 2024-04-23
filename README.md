@@ -8,7 +8,7 @@ Welcome to EdgeBoost's repository. This repository contains the code for the wor
 EdgeBoost is a selective input offloading system designed to overcome the challenges of limited
 computational resources on edge devices. EdgeBoost trains and calibrates a lightweight model for deployment on the edge and, in addition, deploys a large, complex model on the cloud. During inference, the edge model makes initial predictions for input samples, and if the confidence of the prediction is low, the sample is sent to the cloud model for further processing otherwise, we accept the local prediction.
 
-![EdgeBoost System Diagram](images/image.png)
+![EdgeBoost System Diagram](images/img.png)
 
 ## Installation Instructions
 
