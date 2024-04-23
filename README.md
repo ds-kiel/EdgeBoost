@@ -40,7 +40,35 @@ Follow these instructions to set up the required Python environment for running 
 
 ## Usage
 
-### Train from Scratch
+### Train the Models
+
+To train the edge/cloud model, use train.py. This repo trains MobileNetV3 Small (as edge model) and EfficientV2L(as cloud model) on CIFAR-100 dataset. But the same can be used for other datasets or models
+
+To train a model from scratch, execute the following command:
+
+```bash
+python train.py --model_name <model_name> --data_dir <path_to_data>
+```
+Replace <model_name> with mobilenet_v3 or efficientnet_v2_l and <path_to_data> to store the CIFAR-100 dataset. After training, the models are saved <model_name>.pth.
+
+### Model Evaluation
+
+After training your models with `train.py`, you can evaluate their performance using the `evaluate.py` script. This evaluation will output the accuracy of the chosen model on the CIFAR100 test dataset and will calculate the Expected Calibration Error (ECE).
+
+### Usage
+
+To evaluate a model, run the `evaluate.py` script with the required arguments:
+
+- `--model_name`: Name of the model you wish to evaluate. Choices are `mobilenet_v3` or `efficientnet_v2_l`.
+- `--model_path`: Path to the saved weights of the trained model.
+- `--data_dir`: Directory path for the CIFAR100 dataset.
+
+Example command
+
+```bash
+python evaluate.py --model_name mobilenet_v3 --model_path path/to/mobilenet_v3_cifar100.pth --data_dir ./data
+```
+
 
 
 
