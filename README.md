@@ -1,7 +1,7 @@
 
 # EdgeBoost: Confidence Boosting for Resource Constrained Inference via Selective Offloading
 
-Welcome to EdgeBoost's repository. This repository contains the code for the work presented in the paper titled "EdgeBoost: Confidence Boosting for Resource Constrained Inference via Selective Offloading"
+Welcome to EdgeBoost's repository. This repository contains the code for the work presented in the paper titled "EdgeBoost: Confidence Boosting for Resource Constrained Inference via Selective Offloading".
 
 ## About EdgeBoost
 
