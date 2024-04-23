@@ -88,16 +88,16 @@ python offload.py --mobnet_cal PATH_TO_CALIBRATED_MOBNET_PROBS --mobnet_uncal PA
 
 Where:
 
-- `--mobnet_cal`: is the path to the .npy file containing the calibrated MobileNet probabilities.
-- `--mobnet_uncal`: is the path to the .npy file containing the uncalibrated MobileNet probabilities.
-- `--effnet`: is the path to the .npy file containing the EfficientNet probabilities.
-- `--labels`: is the path to the .npy file containing the actual labels for the test data.
+- `--mobnet_cal` is the path to the .npy file containing the calibrated MobileNet probabilities.
+- `--mobnet_uncal` is the path to the .npy file containing the uncalibrated MobileNet probabilities.
+- `--effnet` is the path to the .npy file containing the EfficientNet probabilities.
+- `--labels` is the path to the .npy file containing the actual labels for the test data.
 
 The script will output:
 
-- Calibration curve plot saved as cifar-reliability.pdf.
+- Calibration curve plot saved as `cifar-reliability.pdf`.
 - Console output detailing the combined accuracy and offloading metrics at various thresholds.
-Ensure that all the .npy files are correctly located at the paths specified when running the script.
+
 
 
 
