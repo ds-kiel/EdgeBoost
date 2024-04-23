@@ -6,13 +6,11 @@ from utils.dataset_utils import get_cifar100_loaders
 from models import get_model
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, random_split
-import random
 import argparse
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from sklearn.metrics import accuracy_score
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 
