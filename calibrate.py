@@ -14,6 +14,7 @@ import torch.optim as optim
 from sklearn.metrics import accuracy_score
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 
@@ -29,18 +30,12 @@ class ResizeAndCenterCrop:
 
 
 def calibrate(model_name,model_path,data_dir,batch_size=32):
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-   
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")   
 
     model = get_model(model_name)
     model=model.to(device)
     model.load_state_dict(torch.load(model_path))
     criterion = nn.CrossEntropyLoss()
-    
-    
-
-
 
     transform_pipeline = transforms.Compose([
         ResizeAndCenterCrop((256, 256), 224),
@@ -106,5 +101,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     calibrate(args.model_name, args.model_path, args.data_dir)
-import numpy as np
-import matplotlib.pyplot as plt
+
