@@ -24,7 +24,7 @@ class ResizeAndCenterCrop:
         img = self.center_crop(img)
         return img
 
-def evaluate(model_name, model_path, data_dir, batch_size):
+def evaluate(model_name, model_path, data_dir):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Define transformations
@@ -33,6 +33,8 @@ def evaluate(model_name, model_path, data_dir, batch_size):
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
+
+    batch_size=32
 
     # Load CIFAR100 test data
     test_dataset = datasets.CIFAR100(root=data_dir, train=False, download=True, transform=transform_pipeline)
@@ -86,7 +88,6 @@ if __name__ == '__main__':
     parser.add_argument("--model_name", type=str, choices=['mobilenet_v3', 'efficientnet_v2_l'], required=True, help="Model to evaluate")
     parser.add_argument("--model_path", type=str, required=True, help="Path to the trained model weights")
     parser.add_argument("--data_dir", type=str, default="./data", help="Directory for storing CIFAR100 data")
-    parser.add_argument("--batch_size", type=int, default=32, help="Batch size for evaluation")
 
     args = parser.parse_args()
-    evaluate(args.model_name, args.model_path, args.data_dir, args.batch_size)
+    evaluate(args.model_name, args.model_path, args.data_dir)
