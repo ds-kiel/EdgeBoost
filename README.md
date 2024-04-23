@@ -55,19 +55,30 @@ Replace <model_name> with mobilenet_v3 or efficientnet_v2_l and <path_to_data> t
 
 After training your models with `train.py`, you can evaluate their performance using the `evaluate.py` script. This evaluation will output the accuracy of the chosen model on the CIFAR100 test dataset and will calculate the Expected Calibration Error (ECE).
 
-### Usage
-
 To evaluate a model, run the `evaluate.py` script with the required arguments:
 
 - `--model_name`: Name of the model you wish to evaluate. Choices are `mobilenet_v3` or `efficientnet_v2_l`.
 - `--model_path`: Path to the saved weights of the trained model.
-- `--data_dir`: Directory path for the CIFAR100 dataset.
+- `--data_dir`: Directory path for the CIFAR-100 dataset.
 
 Example command
 
 ```bash
 python evaluate.py --model_name mobilenet_v3 --model_path path/to/mobilenet_v3_cifar100.pth --data_dir ./data
 ```
+This command initializes the model, loads the saved weights, and performs an evaluation to report the accuracy and ECE. It also saves the uncalibrated probabilities of the test set and the test labels in .npy format which are then used in the offloading process.
+
+### Model Calibration
+
+Use the following command to calibrate the trained model
+
+```bash
+python calibrate.py --model_path PATH_TO_YOUR_MODEL --model_name NAME_OF_YOUR_MODEL --data_dir PATH_TO_CIFAR100_DATASET
+```
+The output will display the test loss, accuracy on the test set, and the Expected Calibration Error (ECE) after scaling. The script will also generate a .npy file containing the calibrated model's probabilities:
+
+
+
 
 
 
