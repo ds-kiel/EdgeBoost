@@ -1,8 +1,6 @@
 # EdgeOffload/train.py
 
 import os
-
-
 import argparse
 import torch
 import torch.nn as nn
@@ -11,10 +9,12 @@ from sklearn.metrics import accuracy_score
 from utils.dataset_utils import get_cifar100_loaders
 from models import get_model
 
-def train(model_name, data_dir, batch_size, epochs, lr):
+def train(model_name, data_dir, epochs):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
+    lr=0.01
+    batch_size=32
     
     # Load data
     train_loader, test_loader, val_loader = get_cifar100_loaders(data_dir, batch_size)
@@ -81,9 +81,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on CIFAR100 with early stopping and validation")
     parser.add_argument("--model_name", type=str, choices=['mobilenet_v3', 'efficientnet_v2_l'], required=True, help="Model to train")
     parser.add_argument("--data_dir", type=str, default="./data", help="Directory for storing CIFAR100 data")
-    parser.add_argument("--batch_size", type=int, default=64, help="Batch size for training and validation")
     parser.add_argument("--epochs", type=int, default=200, help="Number of epochs to train")
-    parser.add_argument("--lr", type=float, default=0.01, help="Learning rate")
 
     args = parser.parse_args()
-    train(args.model_name, args.data_dir, args.batch_size, args.epochs, args.lr)
+    train(args.model_name, args.data_dir, args.epochs)
