@@ -85,8 +85,7 @@ To execute the offload script, use the following command:
 
 ```bash
 python offload.py --mobnet_cal PATH_TO_CALIBRATED_MOBNET_PROBS --mobnet_uncal PATH_TO_UNCALIBRATED_MOBNET_PROBS --effnet PATH_TO_EFFICIENTNET_PROBS --labels PATH_TO_LABELS
-
-Where:
+```
 
 - `--mobnet_cal` is the path to the .npy file containing the calibrated MobileNet probabilities.
 - `--mobnet_uncal` is the path to the .npy file containing the uncalibrated MobileNet probabilities.
